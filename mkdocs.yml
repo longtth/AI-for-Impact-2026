@@ -1,5 +1,7 @@
 site_name: Hello World with AGENT Development
 site_description: Hướng dẫn xây dựng và vận hành một agent đơn giản với Python và Claude API
+site_url: https://longtth.github.io/AI-for-Impact-2026/
+repo_url: https://github.com/longtth/AI-for-Impact-2026
 docs_dir: docs
 strict: true
 
