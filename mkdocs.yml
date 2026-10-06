@@ -1,0 +1,43 @@
+site_name: Hello World with AGENT Development
+site_description: Hướng dẫn xây dựng và vận hành một agent đơn giản với Python và Claude API
+docs_dir: docs
+strict: true
+
+theme:
+  name: material
+  language: vi
+  features:
+    - navigation.footer
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Chuyển sang chế độ tối
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Chuyển sang chế độ sáng
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Trang chủ: index.md
+  - 1. Khái niệm: 01-khai-niem.md
+  - 2. Xây agent: 02-xay-agent.md
+  - 3. Vận hành: 03-van-hanh.md
+  - 4. Bước tiếp theo: 04-buoc-tiep-theo.md
+
+markdown_extensions:
+  - tables
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences

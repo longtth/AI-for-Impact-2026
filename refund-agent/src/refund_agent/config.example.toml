@@ -1,0 +1,14 @@
+# Cấu hình của refund-agent. `refund-agent init` sẽ sao chép file này ra đường dẫn mặc định.
+# KHÔNG đặt API key ở đây: dùng biến môi trường ANTHROPIC_API_KEY.
+
+# Model Claude dùng cho agent
+model = "claude-sonnet-5-5"
+
+# Giới hạn token cho mỗi lần LLM trả lời
+max_tokens = 1024
+
+# Giới hạn số vòng lặp của agent (điều kiện dừng an toàn)
+max_steps = 8
+
+# Hoàn tiền lớn hơn mức này (VND) phải có nhân viên duyệt
+approval_threshold_vnd = 2000000

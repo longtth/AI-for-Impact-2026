@@ -1,0 +1,38 @@
+[project]
+name = "ai-impact-2026"
+version = "0.2.0"
+description = "Học liệu 3 buổi lập trình AI Agent: RPS Coin Bot (oẳn tù tì ăn coin)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40",
+    "httpx>=0.27",
+    "jsonschema>=4.20",
+    "python-dotenv>=1.0",
+    "truststore>=0.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+    "pyright>=1.1.380",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["instructor"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pyright]
+include = ["common", "agent", "evaluator"]

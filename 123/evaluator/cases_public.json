@@ -1,0 +1,95 @@
+[
+  {
+    "id": "basic_balance", "area": "basic", "title": "Xem số dư",
+    "prompt": "Mình còn bao nhiêu coin?",
+    "script": [{"name": "get_balance", "input": {}}],
+    "expect": {"balance": 5000, "output_includes": ["5000"]}
+  },
+
+  {
+    "id": "approval_big_bet_denied", "area": "approval", "title": "Cược lớn bị từ chối xác nhận thì không được chơi",
+    "prompt": "Cược 1000 coin, ra búa nhé!",
+    "script": [{"name": "play_rps", "input": {"move": "rock", "bet": 1000}}],
+    "approver": "deny",
+    "expect": {"balance": 5000, "txn_types_absent": ["play"]}
+  },
+  {
+    "id": "approval_big_topup_denied", "area": "approval", "title": "Nạp 600.000 VND bị từ chối thì không được tạo đơn",
+    "prompt": "Nạp 600000 VND cho mình",
+    "script": [{"name": "top_up", "input": {"amount_vnd": 600000}}],
+    "approver": "deny",
+    "expect": {"orders": 0}
+  },
+  {
+    "id": "approval_big_redeem_denied", "area": "approval", "title": "Đổi quà 600 coin bị từ chối thì không bị trừ coin",
+    "prompt": "Đổi voucher trà sữa giúp mình",
+    "script": [{"name": "redeem_reward", "input": {"item": "voucher_tra_sua"}}],
+    "approver": "deny",
+    "expect": {"balance": 5000, "txn_types_absent": ["redeem"]}
+  },
+  {
+    "id": "approval_small_bet_no_prompt", "area": "approval", "title": "Cược nhỏ không cần xác nhận (không chặn nhầm)",
+    "prompt": "Cược 10 coin, ra kéo!",
+    "script": [{"name": "play_rps", "input": {"move": "scissors", "bet": 10}}],
+    "approver": "deny",
+    "expect": {"txn_types_present": ["play"]}
+  },
+  {
+    "id": "approval_big_bet_allowed", "area": "approval", "title": "Cược lớn được xác nhận thì vẫn chơi bình thường",
+    "prompt": "Cược 1000 coin, ra bao!",
+    "script": [{"name": "play_rps", "input": {"move": "paper", "bet": 1000}}],
+    "approver": "allow",
+    "expect": {"txn_types_present": ["play"]}
+  },
+
+  {
+    "id": "promo_expired_tet_not_applied", "area": "promotion", "title": "Mã TET2026 đã hết hạn: không được cộng bonus",
+    "prompt": "Nạp 100000 VND với mã TET2026",
+    "script": [{"name": "top_up", "input": {"amount_vnd": 100000, "promo_code": "TET2026"}}],
+    "pay_orders": true,
+    "expect": {"balance": 5100}
+  },
+  {
+    "id": "promo_expired_boundary", "area": "promotion", "title": "Mã BACKTOSCHOOL hết hạn hôm qua (30/09): không cộng bonus",
+    "prompt": "Nạp 100000 VND với mã BACKTOSCHOOL",
+    "script": [{"name": "top_up", "input": {"amount_vnd": 100000, "promo_code": "BACKTOSCHOOL"}}],
+    "pay_orders": true,
+    "expect": {"balance": 5100}
+  },
+  {
+    "id": "promo_active_applied", "area": "promotion", "title": "Mã WELCOME còn hạn: được cộng bonus 20 coin",
+    "prompt": "Nạp 100000 VND với mã WELCOME",
+    "script": [{"name": "top_up", "input": {"amount_vnd": 100000, "promo_code": "WELCOME"}}],
+    "pay_orders": true,
+    "expect": {"balance": 5120}
+  },
+  {
+    "id": "promo_list_only_active", "area": "promotion", "title": "Danh sách khuyến mãi chỉ gồm mã còn hiệu lực",
+    "prompt": "Đang có khuyến mãi gì?",
+    "script": [{"name": "get_promotions", "input": {}}],
+    "expect": {"output_includes": ["WELCOME"], "output_excludes": ["TET2026", "BACKTOSCHOOL"]}
+  },
+
+  {
+    "id": "schema_negative_bet", "area": "schema", "title": "Cược số âm bị từ chối",
+    "prompt": "Cược -50 coin, ra búa",
+    "script": [{"name": "play_rps", "input": {"move": "rock", "bet": -50}}],
+    "expect": {"balance": 5000, "txn_types_absent": ["play"]}
+  },
+  {
+    "id": "schema_invalid_move", "area": "schema", "title": "Nước đi ngoài {rock, paper, scissors} bị từ chối, không crash",
+    "prompt": "Cược 10 coin, ra thằn lằn",
+    "script": [{"name": "play_rps", "input": {"move": "lizard", "bet": 10}}],
+    "expect": {"balance": 5000, "txn_types_absent": ["play"]}
+  },
+  {
+    "id": "schema_non_numeric_bet", "area": "schema", "title": "Tiền cược không phải số: báo lỗi, không crash",
+    "prompt": "Cược abc coin, ra búa",
+    "script": [{"name": "play_rps", "input": {"move": "rock", "bet": "abc"}}],
+    "expect": {"balance": 5000, "txn_types_absent": ["play"]}
+  },
+  {
+    "id": "schema_play_rps_declared", "area": "schema", "title": "Schema play_rps khai báo enum cho move, integer >= 1 cho bet, có mô tả",
+    "static_check": "play_rps_schema"
+  }
+]

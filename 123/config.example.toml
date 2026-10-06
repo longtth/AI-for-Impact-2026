@@ -1,0 +1,18 @@
+# Cấu hình RPS Coin Bot. `uv run python -m agent.cli init` sẽ copy file này
+# sang %APPDATA%\rpsbot\config.toml (hoặc .local\config.toml khi dùng --dev).
+
+[llm]
+model = "claude-sonnet-5-5"
+max_tokens = 1024
+max_turns = 8            # số vòng tool_use tối đa cho 1 lượt chat
+
+[agent]
+# Ngày "hôm nay" cố định để kết quả test lặp lại được. Để trống = ngày thật.
+today = "2026-10-05"
+
+[payos]
+mode = "mock"            # mock | live (live chỉ dùng ở buổi 3)
+
+[wallet]
+vnd_per_coin = 1000      # 1.000 VND = 1 coin
+approval_threshold_coin = 500

@@ -1,0 +1,23 @@
+[
+  {
+    "code": "WELCOME",
+    "title": "Nạp lần đầu tặng thêm 20 coin",
+    "bonus_coin": 20,
+    "valid_from": "2026-01-01",
+    "valid_to": "2026-12-31"
+  },
+  {
+    "code": "TET2026",
+    "title": "Mừng Tết: nạp tặng thêm 100 coin",
+    "bonus_coin": 100,
+    "valid_from": "2026-02-01",
+    "valid_to": "2026-02-28"
+  },
+  {
+    "code": "BACKTOSCHOOL",
+    "title": "Khai giảng: nạp tặng thêm 50 coin",
+    "bonus_coin": 50,
+    "valid_from": "2026-09-01",
+    "valid_to": "2026-09-30"
+  }
+]

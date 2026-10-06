@@ -1,0 +1,13 @@
+__pycache__/
+.venv/
+.local/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+config.toml
+.env
+
+# MkDocs
+site/
+.cache/
