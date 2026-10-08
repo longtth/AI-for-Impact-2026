@@ -397,4 +397,6 @@ Hàm `run_agent` nhận `messages_api` (đối tượng có hàm `create`) thay 
 4. **Khó:** thêm chính sách "khách hoàn tiền quá 3 lần trong tháng thì chuyển nhân viên". Đặt quy tắc ở đâu: prompt hay code? Giải thích lựa chọn.
 5. **Khó:** viết test mô phỏng LLM trả về tham số sai kiểu (`amount` là chuỗi). Hệ thống phản ứng thế nào, và bạn muốn nó phản ứng thế nào?
 
+**Muốn chạy bằng LLM local, không cần API key?** Xem [Phần 2b: xây cùng agent này bằng Ollama](02b-xay-agent-ollama.md).
+
 **Tiếp theo:** Phần 3, những điều cần biết để vận hành agent trong thực tế.

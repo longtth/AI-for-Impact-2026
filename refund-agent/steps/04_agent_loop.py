@@ -49,7 +49,7 @@ def run_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
 
 client = anthropic.Anthropic()
 messages: list[anthropic.types.MessageParam] = [
-    {"role": "user", "content": "Tôi muốn hoàn tiền đơn DH1002, email binh@example.com."}
+    {"role": "user", "content": "Tôi muốn hoàn tiền đơn DH1005, email em@example.com."}
 ]
 
 for step in range(1, MAX_STEPS + 1):

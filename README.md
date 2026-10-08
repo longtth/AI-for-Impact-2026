@@ -10,3 +10,4 @@ uv sync
 uv run mkdocs serve      # xem thử tại http://127.0.0.1:8000
 uv run mkdocs build      # xuất site tĩnh ra site/
 ```
+Bài tập về nhà: fork cái này ra sử dụng Gemini 

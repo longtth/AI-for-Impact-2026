@@ -1,0 +1,22 @@
+# Cấu hình của refund-agent-ollama. `refund-agent-ollama init` sẽ sao chép file này ra đường dẫn mặc định.
+# Ollama chạy local nên KHÔNG cần API key.
+
+# Model dùng cho agent. Phải là model có hỗ trợ tool calling (xem ollama.com/search?c=tools).
+# Tải trước bằng: ollama pull qwen3:8b
+model = "qwen3:8b"
+
+# Địa chỉ server Ollama
+host = "http://localhost:11434"
+
+# Kích thước context window (token). Ollama mặc định khá nhỏ, mô tả tool + system prompt + lịch sử
+# dễ bị cắt nếu để thấp.
+num_ctx = 8192
+
+# Giới hạn token cho mỗi lần LLM trả lời
+max_tokens = 1024
+
+# Giới hạn số vòng lặp của agent (điều kiện dừng an toàn)
+max_steps = 8
+
+# Hoàn tiền lớn hơn mức này (VND) phải có nhân viên duyệt
+approval_threshold_vnd = 2000000

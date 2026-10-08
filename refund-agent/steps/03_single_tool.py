@@ -35,7 +35,7 @@ GET_ORDER_TOOL: anthropic.types.ToolParam = {
 
 client = anthropic.Anthropic()
 messages: list[anthropic.types.MessageParam] = [
-    {"role": "user", "content": "Đơn DH1001 của tôi (an@example.com) giao chưa?"}
+    {"role": "user", "content": "Đơn DH1006 của tôi (phuc@example.com) giao chưa?"}
 ]
 
 # Lần gọi 1: LLM thấy tool và quyết định dùng nó.
@@ -71,4 +71,5 @@ second = client.messages.create(
     model=MODEL, max_tokens=500, tools=[GET_ORDER_TOOL], messages=messages
 )
 print("stop_reason lần 2:", second.stop_reason)  # -> "end_turn"
-print(second.content[0].text)  # type: ignore[union-attr]
+answer = "".join(block.text for block in second.content if block.type == "text")
+print(answer)  # type: ignore[union-attr]

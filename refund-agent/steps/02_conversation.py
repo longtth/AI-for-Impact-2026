@@ -16,6 +16,8 @@ SYSTEM = (
     "Trả lời tiếng Việt, lịch sự, ngắn gọn. Chưa có công cụ nào, nên đừng giả vờ tra cứu đơn."
 )
 
+# SYSTEM = ("")
+
 client = anthropic.Anthropic()
 history: list[anthropic.types.MessageParam] = []
 
@@ -23,7 +25,9 @@ history: list[anthropic.types.MessageParam] = []
 def say(user_text: str) -> str:
     history.append({"role": "user", "content": user_text})
     response = client.messages.create(model=MODEL, max_tokens=300, system=SYSTEM, messages=history)
-    answer = response.content[0].text  # type: ignore[union-attr]
+    # print("".join(block.text for block in response.content if block.type == "text"))
+
+    answer = "".join(block.text for block in response.content if block.type == "text")
     history.append({"role": "assistant", "content": answer})
     print(f"Khách: {user_text}\nBot  : {answer}\n(lịch sử hiện có {len(history)} message)\n")
     return answer

@@ -32,6 +32,7 @@ nav:
   - Trang chủ: index.md
   - 1. Khái niệm: 01-khai-niem.md
   - 2. Xây agent: 02-xay-agent.md
+  - 2b. Xây agent bằng Ollama: 02b-xay-agent-ollama.md
   - 3. Vận hành: 03-van-hanh.md
   - 4. Bước tiếp theo: 04-buoc-tiep-theo.md
 
