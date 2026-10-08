@@ -24,18 +24,46 @@ Những ý đáng mang theo:
 
 ## 4.2. Hướng mở rộng
 
-| Chủ đề | Ý tưởng | Gắn với dự án này |
-|---|---|---|
-| **Framework / Agent SDK** | Các thư viện đóng gói sẵn vòng lặp, quản lý lịch sử, retry, tracing. Giờ bạn đã hiểu bản chất nên đánh giá chúng dễ hơn | Thử viết lại `agent.py` bằng một SDK và so sánh |
-| **Streaming** | Nhận câu trả lời từng phần để giao diện phản hồi nhanh | Hiển thị câu trả lời dần cho khách |
-| **Hội thoại nhiều lượt thật** | Agent giữ phiên chat, khách trả lời tiếp khi bot hỏi lại | Hiện mỗi lần `run` là một yêu cầu độc lập |
-| **Bộ nhớ dài hạn** | Lưu lịch sử khách qua các phiên để dùng lại | Biết khách hay hoàn tiền thì cảnh giác hơn |
-| **RAG** | Tìm tài liệu liên quan rồi đưa vào prompt | Để chính sách hoàn tiền dài hàng chục trang vẫn tra được |
-| **MCP** | Chuẩn để cắm tool/nguồn dữ liệu vào agent | Đưa `shop` thành một MCP server dùng được với nhiều agent |
-| **Structured output** | Ép LLM trả kết quả đúng định dạng JSON | Phân loại yêu cầu trước khi xử lý |
-| **Multi-agent** | Nhiều agent chuyên biệt phối hợp | Agent tiếp nhận, agent kiểm tra gian lận, agent hoàn tiền |
-| **Prompt caching** | Giảm chi phí cho phần prompt lặp lại | Cache system prompt và mô tả tool |
-| **Tracing / observability** | Công cụ xem chi tiết từng lượt chạy | Thay cho việc đọc file log thủ công |
+- **Thực tế**:
+    - cái app này dùng demo trong 1 workshop, yêu cầu đơn giản nên mọi thứ làm việc với dòng lệnh, 
+    - thử gắn vào 1 cái shop "hơi thực tế" bằng 1 cái facebook page, 
+    - làm sao để đọc dc nội dung chat từ fb mess? 
+- **Thực tế +1** 
+    - gắn nó vào 1 web bán hàng do bạn tự code, có data đơn hàng "gần giống thật" 
+    - giờ thì dùng Agent nhận data chat từ fb mess và update đơn hàng trong web bán hàng của bạn. 
+- **Thực tế +2**
+    - ngoài bán hàng trên fb, ta còn bán trên zalo, vậy làm sao để lấy dc message từ zalo? 
+    - (nhắc nhỏ): zalo API ko dễ dùng vậy đâu :) 
+- **Streaming**
+    - Ý tưởng: nhận câu trả lời từng phần để giao diện phản hồi nhanh.
+    - Gắn với dự án này: hiển thị câu trả lời dần cho khách.
+- **Hội thoại nhiều lượt thật**
+    - Ý tưởng: agent giữ phiên chat, khách trả lời tiếp khi bot hỏi lại.
+    - Gắn với dự án này: hiện mỗi lần `run` là một yêu cầu độc lập.
+- **Bộ nhớ dài hạn**
+    - Ý tưởng: lưu lịch sử khách qua các phiên để dùng lại.
+    - Gắn với dự án này: biết khách hay hoàn tiền thì cảnh giác hơn.
+- **RAG**
+    - Ý tưởng: tìm tài liệu liên quan rồi đưa vào prompt.
+    - Gắn với dự án này: để chính sách hoàn tiền dài hàng chục trang vẫn tra được.
+- **MCP**
+    - Ý tưởng: chuẩn để cắm tool/nguồn dữ liệu vào agent.
+    - Gắn với dự án này: đưa `shop` thành một MCP server dùng được với nhiều agent.
+- **Structured output**
+    - Ý tưởng: ép LLM trả kết quả đúng định dạng JSON.
+    - Gắn với dự án này: phân loại yêu cầu trước khi xử lý.
+- **Multi-agent**
+    - Ý tưởng: nhiều agent chuyên biệt phối hợp.
+    - Gắn với dự án này: agent tiếp nhận, agent kiểm tra gian lận, agent hoàn tiền.
+- **Prompt caching**
+    - Ý tưởng: giảm chi phí cho phần prompt lặp lại.
+    - Gắn với dự án này: cache system prompt và mô tả tool.
+- **Tracing / observability**
+    - Ý tưởng: công cụ xem chi tiết từng lượt chạy.
+    - Gắn với dự án này: thay cho việc đọc file log thủ công.
+- **Framework / Agent SDK**
+    - Ý tưởng: các thư viện đóng gói sẵn vòng lặp, quản lý lịch sử, retry, tracing. Giờ bạn đã hiểu bản chất nên đánh giá chúng dễ hơn.
+    - Gắn với dự án này: thử viết lại `agent.py` bằng một SDK và so sánh.
 
 Thứ tự gợi ý: làm bài tập, rồi eval (3.4), rồi RAG hoặc bộ nhớ, và multi-agent để sau cùng. Đừng thêm độ phức tạp trước khi bạn đo được nó giúp ích.
 
